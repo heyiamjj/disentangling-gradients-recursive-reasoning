@@ -22,7 +22,7 @@ Both models use the same flat TRM architecture. The only difference is the gradi
 
 | | Dual L/H (HRM) | Single flat (TRM) |
 |---|---|---|
-| **1-step gradient (O1)** | 55.0% (HRM paper) | **2.2% (this paper)** |
+| **1-step gradient (O1)** | [Future work] | **2.2% (this paper)** |
 | **Full BPTT (OT)** | [Future work] | **18.9% (this paper)** |
 
 The community compared HRM diagonally to TRM — confounded architecture with gradient method. We fill the right column to isolate the gradient variable.
