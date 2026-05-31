@@ -1,8 +1,20 @@
-+         # 1-step gradient (O(1) memory)
-+             for _L_step in range(self.config.L_cycles):
-+                 z_L = self.L_level(z_L, z_H + input_embeddings, **seq_info)
-+             z_H = self.L_level(z_H, z_L, **seq_info)
--         # H_cycles-1 without grad
--         # 1 with grad
--         for _L_step in range(self.config.L_cycles):
--             z_L = self.L_level(z_L, z_H + input_embeddings, **seq_info)
+diff --git a/TinyRecursiveModels/models/recursive_reasoning/trm.py b/TinyRecursiveModels/models/recursive_reasoning/trm.py
+--- a/models/recursive_reasoning/trm.py    (original: full BPTT)
++++ b/models/recursive_reasoning/trm.py    (patched: 1-step gradient, O(1))
+@@ -1,6 +1,6 @@
+-        # H_cycles-1 without grad
+-        with torch.no_grad():
++        # 1-step gradient (O(1) memory)
++        with torch.no_grad():
+             for _H_step in range(self.config.H_cycles-1):
+                 for _L_step in range(self.config.L_cycles):
+                     z_L = self.L_level(z_L, z_H + input_embeddings, **seq_info)
+                 z_H = self.L_level(z_H, z_L, **seq_info)
+-        # 1 with grad
+-        for _L_step in range(self.config.L_cycles):
+-            z_L = self.L_level(z_L, z_H + input_embeddings, **seq_info)
+-        z_H = self.L_level(z_H, z_L, **seq_info)
++            for _L_step in range(self.config.L_cycles):
++                z_L = self.L_level(z_L, z_H + input_embeddings, **seq_info)
++            z_H = self.L_level(z_H, z_L, **seq_info)
++        z_H = self.L_level(z_H, z_L, **seq_info)
