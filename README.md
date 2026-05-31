@@ -22,8 +22,8 @@ Both models use the same flat TRM architecture. The only difference is the gradi
 
 | | Dual L/H (HRM) | Single flat (TRM) |
 |---|---|---|
-| **1-step gradient (O1)** | [Future work] | **2.2% (this paper)** |
-| **Full BPTT (OT)** | [Future work] | **18.9% (this paper)** |
+| **1-step gradient (O(1))** | [Future work] | **2.2% (this paper)** |
+| **Full BPTT (O(T))** | [Future work] | **18.9% (this paper)** |
 
 The community compared HRM diagonally to TRM — confounded architecture with gradient method. We fill the right column to isolate the gradient variable.
 
@@ -42,7 +42,7 @@ The community compared HRM diagonally to TRM — confounded architecture with gr
 │   └── trm_fullbp_final/     # (epochs ~5000, ~10000)
 ├── logs/                     # Full training logs
 │   ├── trm_1step.log
-│   └── trm_fullbp.txt
+│   └── trm_fullbp.log
 ├── config/                   # Training configuration
 │   ├── trm_1step_run.yaml
 │   └── trm_fullbp_run.yaml
@@ -64,6 +64,7 @@ The community compared HRM diagonally to TRM — confounded architecture with gr
 - **Dataset:** Sudoku-Extreme from [sapientinc/sudoku-extreme](https://huggingface.co/datasets/sapientinc/sudoku-extreme)
 - **Hardware:** 2× NVIDIA Tesla T4 (16GB), PyTorch 2.10, CUDA 12.8
 - **Training:** 10,000 epochs, 500+500 examples, float32, AdamW, EMA
+- **Note:** The dataset downloader may throttle unauthenticated requests. Set a `HF_TOKEN` environment variable for reliable downloads.
 - **Gradient patch:** See `patches/gradient_patch.diff` — moves all recursion inside `torch.no_grad()` except the final H-update
 
 ### Checkpoints
@@ -71,7 +72,7 @@ Pre-trained weights are in `checkpoints/`. To evaluate:
 ```python
 # Load and evaluate (see notebook eval cell for full code)
 state = torch.load("checkpoints/trm_1step_final/step_9764")
-model.load_state_dict(state)
+model.load_state_dict(state, strict=False)
 # Run inference on test data...
 ```
 
