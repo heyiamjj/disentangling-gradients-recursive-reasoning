@@ -18,5 +18,3 @@ diff --git a/TinyRecursiveModels/models/recursive_reasoning/trm.py b/TinyRecursi
 +                z_L = self.L_level(z_L, z_H + input_embeddings, **seq_info)
 +            z_H = self.L_level(z_H, z_L, **seq_info)
 +        z_H = self.L_level(z_H, z_L, **seq_info)
-
-
