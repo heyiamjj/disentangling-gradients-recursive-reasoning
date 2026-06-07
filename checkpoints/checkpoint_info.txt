@@ -1,1 +1,0 @@
-Trained model weights at steps 4882 and 9764 for both 1-step gradient and full BPTT variants.

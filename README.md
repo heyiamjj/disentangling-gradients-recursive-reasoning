@@ -101,5 +101,3 @@ Full BPTT achieves lower loss and higher exact accuracy throughout training. The
 MIT. See [LICENSE](LICENSE).
 
 Code based on [SamsungSAILMontreal/TinyRecursiveModels](https://github.com/SamsungSAILMontreal/TinyRecursiveModels) (MIT).
-
-
