@@ -42,3 +42,5 @@ puzzle_emb_weight_decay: 0.1
 run_name: trm_1step_final
 seed: 0
 weight_decay: 0.1
+
+
