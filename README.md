@@ -7,7 +7,7 @@
 
 ## TL;DR
 
-Recursive reasoning models HRM (55%) and TRM (87%) show a huge gap on Sudoku. But TRM changed **both architecture and gradient method** simultaneously. We run a controlled experiment isolating just the gradient method and find it explains the entire gap — exact accuracy collapses from 18.9% to 2.2% (8.6×). **Gradient quality, not architecture, is the bottleneck.**
+Recursive reasoning models HRM (55%) and TRM (87%) show a huge gap on Sudoku. But TRM changed **both architecture and gradient method** simultaneously. We run a controlled experiment isolating just the gradient method and find it explains the entire gap: exact accuracy collapses from 18.9% to 2.2% (8.6×). **Gradient quality, not architecture, is the bottleneck.**
 
 ## Results
 
@@ -25,7 +25,7 @@ Both models use the same flat TRM architecture. The only difference is the gradi
 | **1-step gradient (O(1))** | [Future work] | **2.2% (this paper)** |
 | **Full BPTT (O(T))** | [Future work] | **18.9% (this paper)** |
 
-The community compared HRM diagonally to TRM — confounded architecture with gradient method. We fill the right column to isolate the gradient variable.
+The community compared HRM diagonally to TRM, which confounded architecture with gradient method. We fill the right column to isolate the gradient variable.
 
 ## Repository Structure
 
@@ -65,7 +65,7 @@ The community compared HRM diagonally to TRM — confounded architecture with gr
 - **Hardware:** 2× NVIDIA Tesla T4 (16GB), PyTorch 2.10, CUDA 12.8
 - **Training:** 10,000 epochs, 500+500 examples, float32, AdamW, EMA
 - **Note:** The dataset downloader may throttle unauthenticated requests. Set a `HF_TOKEN` environment variable for reliable downloads.
-- **Gradient patch:** See `patches/gradient_patch.diff` — moves all recursion inside `torch.no_grad()` except the final H-update
+- **Gradient patch:** See `patches/gradient_patch.diff`, which moves all recursion inside `torch.no_grad()` except the final H-update
 
 ### Checkpoints
 Pre-trained weights are in `checkpoints/`. To evaluate:
@@ -96,6 +96,6 @@ Full BPTT achieves lower loss and higher exact accuracy throughout training. The
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT. See [LICENSE](LICENSE).
 
 Code based on [SamsungSAILMontreal/TinyRecursiveModels](https://github.com/SamsungSAILMontreal/TinyRecursiveModels) (MIT).
