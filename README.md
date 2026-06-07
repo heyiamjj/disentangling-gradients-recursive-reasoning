@@ -33,6 +33,8 @@ The community compared HRM diagonally to TRM, which confounded architecture with
 ├── paper/                    # LaTeX source + figures
 │   ├── paper.tex
 │   ├── references.bib
+│   ├── arxiv.sty
+│   ├── DISENTANGLING_...pdf  # Compiled paper
 │   └── plots/
 ├── notebooks/                # Kaggle training notebooks
 │   ├── trm_1step_final.ipynb
@@ -78,8 +80,8 @@ model.load_state_dict(state, strict=False)
 
 ## Training Curves
 
-![Loss](paper/plots/loss.pdf)
-![Exact Accuracy](paper/plots/exact.pdf)
+![Loss](paper/plots/loss.png)
+![Exact Accuracy](paper/plots/exact.png)
 
 Full BPTT achieves lower loss and higher exact accuracy throughout training. The gap widens over time.
 
