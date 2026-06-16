@@ -1,6 +1,6 @@
 # Disentangling Gradient Quality from Architecture in Recursive Reasoning Models
 
-**Paper:** [arXiv:XXXX.XXXXX](https://arxiv.org/abs/XXXX.XXXXX)  
+**Paper:** [10.5281/zenodo.20712090](https://doi.org/10.5281/zenodo.20712090)  
 **Authors:** Jatin (JJ), Independent Researcher
 
 ---
@@ -91,7 +91,8 @@ Full BPTT achieves lower loss and higher exact accuracy throughout training. The
 @article{jj2026disentangling,
   title={Disentangling Gradient Quality from Architecture in Recursive Reasoning Models},
   author={Jatin (JJ)},
-  journal={arXiv preprint arXiv:XXXX.XXXXX},
+  journal={Zenodo preprint},
+  doi={10.5281/zenodo.20712090},
   year={2026}
 }
 ```
